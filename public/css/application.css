@@ -1,0 +1,43 @@
+img.panda-logo {
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 100px;
+  margin-bottom: 5%;
+}
+
+.get-started{
+  margin-top: 5%;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+h2 a {
+  color: #0066CC;
+}
+
+h3 a {
+  color: #0099CC;
+}
+
+.login-screen {
+  text-align: center;
+  font-size: 40px;
+}
+
+.left-side {
+  border: solid 1px;
+}
+
+.right-side {
+  border: solid 1px;
+}
+
+.title, .get-started {
+  font-family: "courier new";
+}
