@@ -1,0 +1,10 @@
+<div class="container">
+	<% @following_posts.each do |post_obj| %>
+	    <a href="/users/<%= post_obj.user.id %>"><h3><%= post_obj.user.username %></h3></a>
+	    <p><%= post_obj.updated_at %> </p>
+	    <br>
+	    <p><%= post_obj.content %></p>
+	    <br>
+	    <br>
+	<% end %>
+</div>

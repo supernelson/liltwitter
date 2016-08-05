@@ -1,0 +1,8 @@
+<div class="container">
+	<% @users.each do |user_obj| %>
+	    <a href="/users/<%= user_obj.id %>"><h3><%= user_obj.name %></h3></a>
+	    <p><%= user_obj.username %> </p>
+	    <br>
+	    <br>
+	<% end %>
+</div>

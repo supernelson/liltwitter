@@ -13,7 +13,20 @@ end
 
 # Create
 post '/users' do
-	redirect '/' # need to decide 
+  if User.find_by(username: params[:user][:username])
+   redirect 'sessions/new'
+  elsif params[:user][:password] == params[:password1]
+    @user = User.new(params[:user])
+    if @user.save
+      session[:id] = @user.id
+      redirect "/users" # check
+    else
+      @errors = @user.errors.full_messages
+      erb :'/users/new'
+    end
+  else
+    redirect '/users/new'
+  end
 end
 
 # Show
@@ -31,9 +44,10 @@ end
 ### another release
 
 
-# Delete
+# Delete - needs to be referenced in an active route
 delete '/users/:id' do
-	User.destroy(params[:id])
+	@user = User.find(params[:id])
+	@user.destroy
 	redirect '/sessions/new'
 end
 
