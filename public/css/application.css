@@ -18,7 +18,16 @@ img.panda-logo {
 }
 
 h2 a {
-  color: gray;
+  color: #0066CC;
+}
+
+h3 a {
+  color: #0099CC;
+}
+
+.login-screen {
+  text-align: center;
+  font-size: 40px;
 }
 
 .left-side {
