@@ -1,5 +1,24 @@
+img.panda-logo {
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .title {
+  font-size: 100px;
   margin-bottom: 5%;
+}
+
+.get-started{
+  margin-top: 5%;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+h2 a {
+  color: gray;
 }
 
 .left-side {
@@ -8,4 +27,8 @@
 
 .right-side {
   border: solid 1px;
+}
+
+.title, .get-started {
+  font-family: "courier new";
 }
