@@ -1,0 +1,10 @@
+<div class="container">
+	<% @posts.each do |post_obj| %>
+	    <a href="/users/<%= @user.id %>"><h3><%= @user.username %></h3></a>
+	    <p><%= post_obj.updated_at %> </p>
+	    <br>
+	    <p><%= post_obj.content %></p>
+	    <br>
+	    <br>
+	<% end %>
+</div>

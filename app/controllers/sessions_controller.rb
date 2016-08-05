@@ -7,9 +7,9 @@ end
 post '/sessions' do
   @user = User.find_by(username: params[:user][:username])
   if @user
-    if @user.authenticate(params[:user][:password])
+    if @user.authenticate?(params[:user][:password])
       session[:id] = @user.id
-      redirect "/users/#{@user.id}"
+      redirect "/users/#{@user.id}" #check
     else
       redirect 'sessions/new'
     end

@@ -1,38 +1,73 @@
 # Index
-get '/user_posts' do
-	@users = User.find(session[:id])
-	erb :'/users_posts/index'
+get '/users/:user_id/posts' do
+	@users = User.find(params[:user_id])
+	@posts = @users.posts
+	erb :'/posts/index'
+end
+
+get '/users/:user_id/following_posts' do
+	@users = User.find(params[:user_id])
+	@posts = @users.posts
+	erb :'/posts/following_index'
 end
 
 
 # New
-get '/user_posts/new' do
-	erb :'/user_posts/new'
+get '/users/:user_id/posts/new' do
+	@users = User.find(params[:user_id])
+	erb :'/posts/new'
 end
 
 
 # Create
-post '/user_posts' do
-	redirect '/' # need to decide 
+post '/users/:user_id/posts' do
+	@user = User.find(params[:user_id])
+	@post = @user.posts.new(params[:user]) #post comes from form
+
+	if @post.save
+		redirect "/users/#{@user.id}/posts"
+	else
+		erb :'/posts/new'
+	end
 end
 
 # Show
-get '/user_posts/:id' do
-	@user = User.find(params[:id])
-	erb :'/user_posts/show'
+get '/users/:user_id/posts/:id' do
+	@users = User.find(params[:user_id])
+	@post = @user.posts.find(params[:id])
+	erb :'/posts/show'
 end
 
 
 # Edit
 ### another release
+# get '/users/:user_id/posts/:id/edit' do
+# 	@users = User.find(params[:user_id])
+# 	@post = @user.posts.find(params[:id])
+# 	erb :'/posts/edit'
+# end
+
 
 
 # Update
 ### another release
+# put '/users/:user_id/posts/:id' do
+# 	@users = User.find(params[:user_id])
+# 	@post = @user.posts.find(params[:id])
+
+# 	if @post.update_attributes(params[:post])
+# 		redirect "/users/#{@user.id}/posts"
+# 	else
+# 		erb :'/posts/edit'
+# 	end
+# end
 
 
 # Delete
-delete '/user_posts/:id' do
-	User.destroy(params[:id])
-	redirect '/sessions/new'
+delete '/users/:user_id/posts/:id' do
+	@user = user.find(params[:user_id])
+	@post = @user.posts.find(params[:id])
+
+	@post.destroy
+	redirect "/users/#{@user.id}/posts"
 end
