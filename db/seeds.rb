@@ -15,6 +15,8 @@ end
    )
 end
 
+
+#fix follower-following relationships to not be symetrical
 30.times do |i|
  Relationship.create(
    follower_id: i+1 ,
