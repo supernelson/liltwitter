@@ -1,20 +1,21 @@
 # Index
 get '/users/:user_id/posts' do
-	@users = User.find(params[:user_id])
-	@posts = @users.posts
+	@user = User.find(params[:user_id])
+	@posts = @user.posts
 	erb :'/posts/index'
 end
 
 get '/users/:user_id/following_posts' do
-	@users = User.find(params[:user_id])
-	@posts = @users.posts
+	@user = User.find(params[:user_id])
+	@following = @user.following
+	@following_posts = @following.map { |followed| followed.posts }.flatten
 	erb :'/posts/following_index'
 end
 
 
 # New
 get '/users/:user_id/posts/new' do
-	@users = User.find(params[:user_id])
+	@user = User.find(params[:user_id])
 	erb :'/posts/new'
 end
 
@@ -33,7 +34,7 @@ end
 
 # Show
 get '/users/:user_id/posts/:id' do
-	@users = User.find(params[:user_id])
+	@user = User.find(params[:user_id])
 	@post = @user.posts.find(params[:id])
 	erb :'/posts/show'
 end

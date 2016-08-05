@@ -18,6 +18,7 @@ gem 'bcrypt'
 
 gem 'faker'
 
+gem 'pry'
 gem 'pry-byebug'
 
 group :test do
