@@ -2,6 +2,12 @@
 	<% @users.each do |user_obj| %>
 	    <a href="/users/<%= user_obj.id %>"><h3><%= user_obj.name %></h3></a>
 	    <p><%= user_obj.username %> </p>
+	    <%if !User.find(session[:id]).following.include?(user_obj) %>
+		    <form action="/users/<%= session[:id] %>/follower" method="POST">
+		    	<input type="hidden" name="user_to_follow_id" value="<%=user_obj.id%>">
+		    	<input type="submit" value="Follow">
+		    </form>
+		<% end %>
 	    <br>
 	    <br>
 	<% end %>

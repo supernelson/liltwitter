@@ -29,6 +29,15 @@ post '/users' do
   end
 end
 
+post '/users/:id/follower' do
+  @user = User.find(params[:id])
+  @user_to_follow = User.find(params[:user_to_follow_id])
+  @user.following << @user_to_follow if !@user.following.include?(@user_to_follow)
+  redirect "/users"
+end
+
+
+
 # Show
 get '/users/:id' do
 	@user = User.find(params[:id])
