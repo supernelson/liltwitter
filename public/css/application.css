@@ -14,6 +14,11 @@ img.panda-logo {
 .get-started{
   margin-top: 5%;
   font-size: 50px;
+  font-weight: bold;
+}
+
+h2 a {
+  color: gray;
 }
 
 .left-side {
@@ -22,4 +27,8 @@ img.panda-logo {
 
 .right-side {
   border: solid 1px;
+}
+
+.title, .get-started {
+  font-family: "courier new";
 }
